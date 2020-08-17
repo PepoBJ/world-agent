@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "+3V+qTzUitLigwnyKKDlm77+4v3dG6B9TZmPIwRG5cMJxQAgK1IPbSAzAKnGksUPTRhD4CiLIi1SYxaQ29kV8w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\filio\\source\\repos\\world-agent\\AppWorldAgent.Infrastructure\\AppWorldAgent.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\filio\\.nuget\\packages\\acr.userdialogs\\7.1.0.446\\acr.userdialogs.7.1.0.446.nupkg.sha512",
+    "C:\\Users\\filio\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\filio\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\filio\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\filio\\.nuget\\packages\\xamarin.forms\\4.8.0.1269\\xamarin.forms.4.8.0.1269.nupkg.sha512"
+  ],
+  "logs": []
+}

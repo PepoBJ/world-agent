@@ -1,0 +1,10 @@
+﻿namespace AppWorldAgent.Infrastructure.Models.Enum
+{
+    public enum ToastConfigEnum
+    {
+        Success = 0,
+        Error = 1,
+        Warning = 2,
+        Info = 3
+    }
+}

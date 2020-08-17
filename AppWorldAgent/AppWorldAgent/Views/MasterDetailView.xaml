@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseViewModel="clr-namespace:AppWorldAgent.ViewModels" 
+             baseViewModel:LocatorViewModel.AutoWireViewModel="true"
+             x:Class="AppWorldAgent.Views.MasterDetailView"
+             Title="{Binding Title}">
+    <StackLayout Padding="0">
+        <ListView x:Name="MenuItemsListView"
+              SeparatorVisibility="None"
+              HasUnevenRows="true"
+              ItemsSource="{Binding MenuItems}"
+              ItemSelected="MenuItemsListView_ItemSelected">
+            <ListView.Header>
+                <Grid  RowSpacing ="0"  ColumnSpacing="0" Padding="0" BackgroundColor="{StaticResource PrimaryColor}">
+                    <Grid  RowSpacing ="0" BackgroundColor="Transparent"  ColumnSpacing="0"  Padding="0">
+                        <StackLayout  Spacing="0" Padding="20" BackgroundColor="Transparent">
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="Start" Padding="0,10" BackgroundColor="Transparent">
+                                <Grid HorizontalOptions="Start" VerticalOptions="End" BackgroundColor="Transparent"  >
+                                    <Image Source="xamarin_logo.png"  HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="80" />
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Padding="0,5,0,0" Spacing="2" BackgroundColor="Transparent">
+                                <Label x:Name="lblHeaderEmail" Text="{Binding UserName}"  TextColor="{StaticResource WhiteColor}" LineBreakMode="TailTruncation" Style="{StaticResource TitleLargeLabelStyle}"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="20,15" ColumnSpacing="15" VerticalOptions="Center" BackgroundColor="Transparent" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image  WidthRequest="25" HeightRequest="25" Source="{Binding Icon}" />
+                            <Grid VerticalOptions="Center" Grid.Column="1" BackgroundColor="Transparent" >
+                                <Label Text="{Binding Title}" TextColor="{StaticResource BlackColor}" />
+                            </Grid>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

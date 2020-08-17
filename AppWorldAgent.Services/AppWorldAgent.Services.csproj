@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppWorldAgent.Infrastructure\AppWorldAgent.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

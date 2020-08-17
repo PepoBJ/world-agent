@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseViewModel="clr-namespace:AppWorldAgent.ViewModels" 
+             xmlns:converters="clr-namespace:AppWorldAgent.Infrastructure.Converters;assembly=AppWorldAgent.Infrastructure" 
+             xmlns:behaviors="clr-namespace:AppWorldAgent.Infrastructure.Behaviors;assembly=AppWorldAgent.Infrastructure"
+             baseViewModel:LocatorViewModel.AutoWireViewModel="true"
+             x:Class="AppWorldAgent.Views.LoginView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converters:WebNavigatingEventArgsConverter x:Key="WebNavigatingEventArgsConverter" />
+            <converters:WebNavigatedEventArgsConverter x:Key="WebNavigatedEventArgsConverter" />
+            <Style x:Key="ToggleButtonStyle" 
+                   TargetType="{x:Type behaviors:ToggleButton}">
+                <Setter Property="HeightRequest" 
+                        Value="35" />
+                <Setter Property="WidthRequest" 
+                        Value="35" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="HorizontalOptions" 
+                        Value="Center" />
+                <Setter Property="Margin" 
+                        Value="5,0" />
+                <Setter Property="Animate" 
+                        Value="True" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,10,0,0" VerticalOptions="FillAndExpand">
+                        <Image Source="launcher_foreground" VerticalOptions="Center" HeightRequest="100" />
+                    </ContentView>
+                    <ContentView VerticalOptions="FillAndExpand" HorizontalOptions="Center" >
+                        <Label Text="App World Agent" Style="{StaticResource TitleLargeLabelStyle}"/>
+                    </ContentView>
+                </StackLayout>
+            </StackLayout>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <StackLayout Margin="24,0">
+                        <Entry Text="{Binding UserName.Value, Mode=TwoWay}" Placeholder="Código" >
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserNameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding UserName.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding UserName.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry IsPassword="{Binding IsPassword, Converter={StaticResource InverseBoolConverter}}" IsSpellCheckEnabled="True" IsEnabled="True" Text="{Binding Password.Value, Mode=TwoWay}" Placeholder="Contraseña">
+                                <Entry.Style>
+                                    <OnPlatform x:TypeArguments="Style">
+                                        <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                    </OnPlatform>
+                                </Entry.Style>
+                                <Entry.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePasswordCommand}" />
+                                </Entry.Behaviors>
+                                <Entry.Triggers>
+                                    <DataTrigger TargetType="Entry" Binding="{Binding Password.IsValid}" Value="False">
+                                        <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                    </DataTrigger>
+                                </Entry.Triggers>
+                            </Entry>
+                            <behaviors:ToggleButton Checked="{Binding IsPassword,  Mode=TwoWay}" Command="{Binding ToggleIsPasswordServicesCommand}" Style="{StaticResource ToggleButtonStyle}">
+                                <behaviors:ToggleButton.CheckedImage>
+                                    <OnPlatform x:TypeArguments="ImageSource">
+                                        <On Platform="Android" Value="EyeBlue" />
+                                    </OnPlatform>
+                                </behaviors:ToggleButton.CheckedImage>
+                                <behaviors:ToggleButton.UnCheckedImage>
+                                    <OnPlatform x:TypeArguments="ImageSource">
+                                        <On Platform="Android" Value="EyeGray" />
+                                    </OnPlatform>
+                                </behaviors:ToggleButton.UnCheckedImage>
+                            </behaviors:ToggleButton>
+                        </StackLayout>
+                        <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+                       
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button x:Name="LoginButton" 
+                            Text="Login" 
+                            Command="{Binding SignInCommand}"/>
+                        <Button x:Name="CancelButton" 
+                            Text="Cancelar"/>
+                    </StackLayout>
+                    <Label FontSize="Medium" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Powered by" ForegroundColor="{StaticResource LightTextColor}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="www.WorldAgent.com" ForegroundColor="{StaticResource LightTextColor}"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
