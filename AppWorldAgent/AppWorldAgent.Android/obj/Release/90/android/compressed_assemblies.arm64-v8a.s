@@ -53,7 +53,7 @@
 
 	/* 5: AppWorldAgent.dll */
 	/* uncompressed_file_size */
-	.word	132608
+	.word	104448
 	/* loaded */
 	.byte	0
 	/* data */
