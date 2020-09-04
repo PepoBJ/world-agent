@@ -1,7 +1,4 @@
 ﻿using AppWorldAgent.Infrastructure.Services.Settings;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AppWorldAgent.ViewModels
 {

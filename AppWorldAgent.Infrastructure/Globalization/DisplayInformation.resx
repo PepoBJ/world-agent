@@ -132,6 +132,12 @@
   <data name="PasswordIsRequired" xml:space="preserve">
     <value>Contraseña es requerido.</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
   <data name="SignInInit" xml:space="preserve">
     <value>Iniciando...</value>
   </data>

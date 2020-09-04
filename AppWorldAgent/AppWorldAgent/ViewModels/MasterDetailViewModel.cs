@@ -27,6 +27,18 @@ namespace AppWorldAgent.ViewModels
             {
                 new MasterDetailModel
                 {
+                    Id = MenuItemType.ProfileView,
+                    Icon = "Profile.png",
+                    Title = "Mi Perfil",
+                },
+                new MasterDetailModel
+                {
+                    Id = MenuItemType.SettingsView,
+                    Icon = "Setup.png",
+                    Title = "Configurar",
+                },
+                new MasterDetailModel
+                {
                     Id = MenuItemType.SelectTestViewModel,
                     Icon = "Test.png",
                     Title = "Test",

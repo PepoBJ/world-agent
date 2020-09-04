@@ -576,6 +576,9 @@ C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\launcher_foreground.png
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\internet.png
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\test.png
+C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\profile.png
+C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\setup.png
+C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\res\drawable\user.png
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\uploadflags.txt
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\resolvedassemblies.hash
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent.Android\obj\Debug\90\android\assets\Acr.UserDialogs.dll

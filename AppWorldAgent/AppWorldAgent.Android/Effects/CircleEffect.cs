@@ -1,7 +1,10 @@
 ﻿using Android.Graphics;
 using Android.Views;
+using AppWorldAgent.Droid.Effects;
 using System;
+using Xamarin.Forms;
 
+[assembly: ExportEffect(typeof(CircleEffect), "CircleEffect")]
 namespace AppWorldAgent.Droid.Effects
 {
     public class CircleEffect : BaseContainerEffect
@@ -44,7 +47,7 @@ namespace AppWorldAgent.Droid.Effects
                 var layerX = width > min ? (width - min) / 2 : 0;
                 var layerY = height > min ? (height - min) / 2 : 0;
 
-                outline.SetRoundRect(new Rect((int)layerX, (int)layerY, (int)(layerX + min), (int)(layerY + min)), radius);
+                outline.SetRoundRect(new Android.Graphics.Rect((int)layerX, (int)layerY, (int)(layerX + min), (int)(layerY + min)), radius);
             }
         }
     }

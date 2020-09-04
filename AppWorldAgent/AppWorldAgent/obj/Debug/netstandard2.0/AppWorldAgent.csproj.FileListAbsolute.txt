@@ -44,6 +44,8 @@ C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\ne
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\Views\LoginView.xaml.g.cs
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\Views\MainView.xaml.g.cs
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\Views\MasterDetailView.xaml.g.cs
+C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\Views\ProfileView.xaml.g.cs
+C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\Views\SettingsView.xaml.g.cs
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\AppWorldAgent.AssemblyInfoInputs.cache
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\AppWorldAgent.AssemblyInfo.cs
 C:\Users\filio\source\repos\world-agent\AppWorldAgent\AppWorldAgent\obj\Debug\netstandard2.0\AppWorldAgent.csproj.CoreCompileInputs.cache

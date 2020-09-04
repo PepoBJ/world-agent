@@ -31,6 +31,14 @@ namespace AppWorldAgent.Views
 
                 switch (item.Id)
                 {
+                    case MenuItemType.ProfileView:
+                        await vm.NavigationService.NavigateToAsync<ProfileViewModel>();
+                        break;
+
+                    case MenuItemType.SettingsView:
+                        await vm.NavigationService.NavigateToAsync<SettingsViewModel>();
+                        break;
+
                     case MenuItemType.SelectTestViewModel:
                         await vm.NavigationService.NavigateToAsync<ConnectionErrorViewModel>();
                         break;

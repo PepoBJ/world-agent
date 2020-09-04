@@ -34,7 +34,7 @@
                         AccessToken = Guid.NewGuid().ToString(),
                         UserName = "World Agent",
                         UserLastName = "World Agent",
-                        UserType = "Admin",
+                        UserType = "Agente",
                         URLService = GlobalSetting.DefaultURLService,
                         Successful = true,
                         Errors = new System.Collections.Generic.List<string>()

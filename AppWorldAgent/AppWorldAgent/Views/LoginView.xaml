@@ -95,7 +95,6 @@
                             </behaviors:ToggleButton>
                         </StackLayout>
                         <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
-                       
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">

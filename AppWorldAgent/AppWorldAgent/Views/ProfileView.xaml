@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseViewModel="clr-namespace:AppWorldAgent.ViewModels" 
+             baseViewModel:LocatorViewModel.AutoWireViewModel="true"
+             xmlns:effects="clr-namespace:AppWorldAgent.Infrastructure.Effects;assembly=AppWorldAgent.Infrastructure" 
+             x:Class="AppWorldAgent.Views.ProfileView"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="BoxView" Class="Circle">
+                <Setter Property="BackgroundColor" Value="{ StaticResource BackgroundColor }" />
+                <Setter Property="WidthRequest" Value="150" />
+                <Setter Property="HeightRequest" Value="150" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="effects:ThemeEffects.Circle" Value="True" />
+            </Style>
+
+            <Style x:Key="AddImageStyle" 
+               TargetType="{x:Type Image}">
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="80" />
+                <Setter Property="WidthRequest"
+                        Value="135" />
+            </Style>
+            <Style x:Key="CheckImageStyle" 
+               TargetType="{x:Type Image}">
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+                <Setter Property="HeightRequest"
+                        Value="135" />
+                <Setter Property="WidthRequest"
+                        Value="135" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource ThemeSecondColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1" BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" BackgroundColor="Transparent">
+                    <Grid.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                            <On Platform="iOS, Android" Value="True" />
+                        </OnPlatform>
+                    </Grid.IsVisible>
+                    <BoxView StyleClass="Circle">
+                    </BoxView>
+                    <Image 
+                Aspect="AspectFit" 
+                Source="User.png"
+                Style="{StaticResource CheckImageStyle}" />
+                </Grid>
+                <StackLayout Grid.Row="1" HorizontalOptions="Center" BackgroundColor="Transparent">
+                    <Label Text="Mi Perfil" TextColor="{StaticResource BlackColor}" Style="{StaticResource TitleLargeLabelStyle}"/>
+                </StackLayout>
+            </Grid>
+            <Frame Grid.Row="2">
+                <Grid BackgroundColor="Transparent">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Nombre:"  Style="{StaticResource TitleMediumLabelStyle}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ProfileModel.Name}" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="Apellidos:"  Style="{StaticResource TitleMediumLabelStyle}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding ProfileModel.LastName}" />
+                    <!--<Label Grid.Row="2" Grid.Column="0" Text="Tipo Usuario:"  Style="{StaticResource TitleMediumLabelStyle}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding ProfileModel.UserType}" />
+                    <Label Grid.Row="3" Grid.Column="0" Text="Cuenta:"  Style="{StaticResource TitleMediumLabelStyle}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding ProfileModel.UserType}" />-->
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

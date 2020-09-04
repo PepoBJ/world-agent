@@ -106,6 +106,24 @@ namespace AppWorldAgent.Infrastructure.Globalization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perfil.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuración.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Iniciando....
         /// </summary>
         public static string SignInInit {

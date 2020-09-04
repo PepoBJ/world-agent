@@ -294,7 +294,7 @@
                 <!--<Setter Property="BorderColor" Value="DarkBlue"/>-->
             </Style>
 
-            <!--<Style TargetType="Button" ApplyToDerivedTypes="True" CanCascade="True">
+            <Style TargetType="Button" ApplyToDerivedTypes="True" CanCascade="True">
                 <Setter Property="WidthRequest" Value="150" />
                 <Setter Property="FontSize" Value="{ StaticResource BaseButtonFontSize }" />
                 <Setter Property="FontAttributes" Value="{ StaticResource BaseButtonFontAttributes }" />
@@ -303,7 +303,7 @@
                 <Setter Property="BackgroundColor" Value="{ StaticResource PrimaryColor }" />
                 <Setter Property="BorderColor" Value="{ StaticResource DefaultButtonClassBorderColor }" />
                 <Setter Property="TextColor" Value="{ StaticResource DefaultButtonClassTextColor }" />
-            </Style>-->
+            </Style>
 
             <Style TargetType="RadioButton" ApplyToDerivedTypes="True" CanCascade="True">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -363,7 +363,7 @@
                 <Setter Property="BarTextColor" Value="{StaticResource WhiteColor}"/>
             </Style>
 
-            <Style TargetType="Button">
+            <!--<Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -381,7 +381,7 @@
                         </VisualStateGroup>
                     </VisualStateGroupList>
                 </Setter>
-            </Style>
+            </Style>-->
 
         </ResourceDictionary>
     </Application.Resources>
