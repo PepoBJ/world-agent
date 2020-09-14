@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:baseViewModel="clr-namespace:AppWorldAgent.ViewModels" 
+             baseViewModel:LocatorViewModel.AutoWireViewModel="true"
+             xmlns:converters="clr-namespace:AppWorldAgent.Infrastructure.Converters;assembly=AppWorldAgent.Infrastructure" 
+             xmlns:behaviors="clr-namespace:AppWorldAgent.Infrastructure.Behaviors;assembly=AppWorldAgent.Infrastructure"
+             x:Class="AppWorldAgent.Views.RegisterView"
+             Title="{Binding Title}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+            <converters:WebNavigatingEventArgsConverter x:Key="WebNavigatingEventArgsConverter" />
+            <converters:WebNavigatedEventArgsConverter x:Key="WebNavigatedEventArgsConverter" />
+            <Style x:Key="ToggleButtonStyle" 
+                   TargetType="{x:Type behaviors:ToggleButton}">
+                <Setter Property="HeightRequest" 
+                        Value="35" />
+                <Setter Property="WidthRequest" 
+                        Value="35" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="HorizontalOptions" 
+                        Value="Center" />
+                <Setter Property="Margin" 
+                        Value="5,0" />
+                <Setter Property="Animate" 
+                        Value="True" />
+            </Style>
+
+            <Style x:Key="HeaderLabelStyle"
+                TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                    Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                    Value="{StaticResource LittleSize}" />
+                <Setter Property="TextColor"
+                    Value="{StaticResource BlackColor}" />
+                <Setter Property="HorizontalOptions"
+                    Value="Start" />
+            </Style>
+
+            <Style x:Key="ButtonStyle"
+                   TargetType="{x:Type Button}">
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource ThemeSecondColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <Frame Margin="24,24">
+                    <StackLayout Margin="24,0">
+                        <Label/>
+                        <Label Text="Registrate" HorizontalOptions="Center" Style="{StaticResource TitleLargerLabelStyle}" />
+                        <Label/>
+
+                        <Label Text="Nombre" Style="{StaticResource HeaderLabelStyle}" />
+                        <Entry Text="{Binding FirstName.Value, Mode=TwoWay}" Placeholder="Nombre" >
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateFirstNameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding FirstName.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding FirstName.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                        <Label Text="Apellidos" Style="{StaticResource HeaderLabelStyle}" />
+                        <Entry Text="{Binding LastName.Value, Mode=TwoWay}" Placeholder="Apellido" >
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateLastNameCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding LastName.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding LastName.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                        <Label Text="Email" Style="{StaticResource HeaderLabelStyle}" />
+                        <Entry Text="{Binding Email.Value, Mode=TwoWay}" Placeholder="Email" >
+                            <Entry.Style>
+                                <OnPlatform x:TypeArguments="Style">
+                                    <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                </OnPlatform>
+                            </Entry.Style>
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateEmailCommand}" />
+                            </Entry.Behaviors>
+                            <Entry.Triggers>
+                                <DataTrigger TargetType="Entry" Binding="{Binding Email.IsValid}" Value="False">
+                                    <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                </DataTrigger>
+                            </Entry.Triggers>
+                        </Entry>
+                        <Label Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                        <Label Text="Contraseña" Style="{StaticResource HeaderLabelStyle}" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry IsPassword="{Binding IsPassword, Converter={StaticResource InverseBoolConverter}}" IsSpellCheckEnabled="True" IsEnabled="True" Text="{Binding Password.Value, Mode=TwoWay}" Placeholder="Contraseña">
+                                <Entry.Style>
+                                    <OnPlatform x:TypeArguments="Style">
+                                        <On Platform="iOS, Android" Value="{StaticResource EntryStyle}" />
+                                    </OnPlatform>
+                                </Entry.Style>
+                                <Entry.Behaviors>
+                                    <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidatePasswordCommand}" />
+                                </Entry.Behaviors>
+                                <Entry.Triggers>
+                                    <DataTrigger TargetType="Entry" Binding="{Binding Password.IsValid}" Value="False">
+                                        <Setter Property="behaviors:LineColorBehavior.LineColor" Value="{StaticResource ErrorColor}" />
+                                    </DataTrigger>
+                                </Entry.Triggers>
+                            </Entry>
+                            <behaviors:ToggleButton Checked="{Binding IsPassword,  Mode=TwoWay}" Style="{StaticResource ToggleButtonStyle}">
+                                <behaviors:ToggleButton.CheckedImage>
+                                    <OnPlatform x:TypeArguments="ImageSource">
+                                        <On Platform="Android" Value="EyeBlue" />
+                                    </OnPlatform>
+                                </behaviors:ToggleButton.CheckedImage>
+                                <behaviors:ToggleButton.UnCheckedImage>
+                                    <OnPlatform x:TypeArguments="ImageSource">
+                                        <On Platform="Android" Value="EyeGray" />
+                                    </OnPlatform>
+                                </behaviors:ToggleButton.UnCheckedImage>
+                            </behaviors:ToggleButton>
+                        </StackLayout>
+                        <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}" Style="{StaticResource ValidationErrorLabelStyle}" />
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button x:Name="RegisterButton" 
+                            Text="Registrar" 
+                            Command="{Binding RegisterCommand}"/>
+                        </StackLayout>
+                        <Button x:Name="LoginButton" Style="{StaticResource ButtonStyle}"
+                            Text="Login" 
+                            Command="{Binding SignInCommand}"/>
+
+                    </StackLayout>
+                </Frame>
+            </ScrollView>
+            <!-- INDICATOR -->
+            <ActivityIndicator      
+              Color="{StaticResource PrimaryColor}"
+              IsRunning="{Binding IsBusy}"
+              IsVisible="{Binding IsBusy}"
+              VerticalOptions="Center"
+              HorizontalOptions="Center">
+                <ActivityIndicator.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS, Android" Value="100" />
+                        <On Platform="UWP, WinRT, WinPhone" Value="400" />
+                    </OnPlatform>
+                </ActivityIndicator.WidthRequest>
+            </ActivityIndicator>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

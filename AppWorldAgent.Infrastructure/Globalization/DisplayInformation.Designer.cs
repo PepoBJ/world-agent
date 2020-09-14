@@ -61,6 +61,33 @@ namespace AppWorldAgent.Infrastructure.Globalization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dirección de correo electrónico fallida.
+        /// </summary>
+        public static string EmailAddressFailed {
+            get {
+                return ResourceManager.GetString("EmailAddressFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Mail es requerido.
+        /// </summary>
+        public static string EmailIsRequired {
+            get {
+                return ResourceManager.GetString("EmailIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apellidos es requerido..
+        /// </summary>
+        public static string LastNameIsRequired {
+            get {
+                return ResourceManager.GetString("LastNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La longitud máxima es {0} caracteres..
         /// </summary>
         public static string MaxLength {
@@ -75,6 +102,15 @@ namespace AppWorldAgent.Infrastructure.Globalization {
         public static string MessageLogout {
             get {
                 return ResourceManager.GetString("MessageLogout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to La longitud minima es {0} caracteres..
+        /// </summary>
+        public static string MinLength {
+            get {
+                return ResourceManager.GetString("MinLength", resourceCulture);
             }
         }
         

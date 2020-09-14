@@ -8,7 +8,8 @@
     {
         #region Setting Constants
 
-        private const string IdAccessToken = "Id_AccessToken";
+        private const string AccessToken = "access_token";
+        private const string IdToken = "id_token";
         private const string IdUserName = "Id_UserName";
         private const string IdUserLastName = "Id_UserLastName";
         private const string IdUserType = "Id_UserType";
@@ -16,6 +17,7 @@
         private const string IdUseMocks = "Id_UseMocks";
 
         private readonly string AccessTokenDefault = string.Empty;
+        private readonly string IdTokenDefault = string.Empty;
         private readonly string UserNameDefault = string.Empty;
         private readonly string UserLastNameDefault = string.Empty;
         private readonly string UserTypeDefault = string.Empty;
@@ -25,10 +27,16 @@
         #endregion
 
         #region Settings Properties
-        public string AccessToken
+        public string AuthAccessToken
         {
-            get => GetValueOrDefault(IdAccessToken, AccessTokenDefault);
-            set => AddOrUpdateValue(IdAccessToken, value);
+            get => GetValueOrDefault(AccessToken, AccessTokenDefault);
+            set => AddOrUpdateValue(AccessToken, value);
+        }
+
+        public string AuthIdToken
+        {
+            get => GetValueOrDefault(IdToken, IdTokenDefault);
+            set => AddOrUpdateValue(IdToken, value);
         }
 
         public string UserName

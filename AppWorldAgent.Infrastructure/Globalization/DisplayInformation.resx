@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmailAddressFailed" xml:space="preserve">
+    <value>Dirección de correo electrónico fallida</value>
+  </data>
+  <data name="EmailIsRequired" xml:space="preserve">
+    <value>E-Mail es requerido</value>
+  </data>
+  <data name="LastNameIsRequired" xml:space="preserve">
+    <value>Apellidos es requerido.</value>
+  </data>
   <data name="MaxLength" xml:space="preserve">
     <value>La longitud máxima es {0} caracteres.</value>
   </data>
   <data name="MessageLogout" xml:space="preserve">
     <value>El Centro de Control ha suspendido su credencial de acceso al sistema, coordine con ellos para mayor información</value>
+  </data>
+  <data name="MinLength" xml:space="preserve">
+    <value>La longitud minima es {0} caracteres.</value>
   </data>
   <data name="NameIsRequired" xml:space="preserve">
     <value>Nombre es requerido.</value>

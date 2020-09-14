@@ -6,12 +6,15 @@ namespace AppWorldAgent.Infrastructure.Models.Result
 {
     public class ResultModel : LogoutParameter
     {
+        #region Constructor
+        public ResultModel()
+        {
+            Successful = false;
+            Errors = new List<string>();
+        }
+        #endregion
+
         #region Properties
-        /// <summary>
-        /// Gets or sets ResultList
-        /// </summary>
-        [JsonProperty("KEYSession")]
-        public string AccessToken { get; set; }
         /// <summary>
         /// Gets or sets AccessToken
         /// </summary>
@@ -24,7 +27,7 @@ namespace AppWorldAgent.Infrastructure.Models.Result
 
     }
 
-    public class ResultModel<T> : ResultModel where T : class 
+    public class ResultModel<T> : ResultModel where T : class
     {
         /// <summary>
         /// Gets or sets ResultList

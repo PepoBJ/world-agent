@@ -35,6 +35,10 @@ namespace AppWorldAgent.Views
                         await vm.NavigationService.NavigateToAsync<ProfileViewModel>();
                         break;
 
+                    //case MenuItemType.RegisterView:
+                    //    await vm.NavigationService.NavigateToAsync<RegisterViewModel>();
+                    //    break;
+
                     case MenuItemType.SettingsView:
                         await vm.NavigationService.NavigateToAsync<SettingsViewModel>();
                         break;

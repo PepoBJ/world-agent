@@ -35,7 +35,7 @@
 
 	/* 3: AppWorldAgent.Infrastructure.dll */
 	/* uncompressed_file_size */
-	.word	94208
+	.word	96256
 	/* loaded */
 	.byte	0
 	/* data */
@@ -44,7 +44,7 @@
 
 	/* 4: AppWorldAgent.Services.dll */
 	/* uncompressed_file_size */
-	.word	7680
+	.word	9728
 	/* loaded */
 	.byte	0
 	/* data */
@@ -53,7 +53,7 @@
 
 	/* 5: AppWorldAgent.dll */
 	/* uncompressed_file_size */
-	.word	104448
+	.word	133120
 	/* loaded */
 	.byte	0
 	/* data */
@@ -188,7 +188,7 @@
 
 	/* 20: System.dll */
 	/* uncompressed_file_size */
-	.word	877568
+	.word	878080
 	/* loaded */
 	.byte	0
 	/* data */

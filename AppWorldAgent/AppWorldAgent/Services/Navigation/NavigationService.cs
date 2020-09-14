@@ -30,7 +30,7 @@
 
         public Task InitializeAsync()
         {
-            if (string.IsNullOrEmpty(_settingsService.AccessToken))
+            if (string.IsNullOrEmpty(_settingsService.AuthAccessToken))
                 return NavigateToAsync<LoginViewModel>();
             else
                 return NavigateToAsync<MainViewModel>();
@@ -94,6 +94,8 @@
 
             if (page is LoginView)
                 Application.Current.MainPage = new LoginView();
+            else if(page is RegisterView)
+                Application.Current.MainPage = new RegisterView();
             else if (page is MainView)
                 Application.Current.MainPage = new CustomMasterView(page);
             else if (Application.Current.MainPage is CustomMasterView masterDetailPage)

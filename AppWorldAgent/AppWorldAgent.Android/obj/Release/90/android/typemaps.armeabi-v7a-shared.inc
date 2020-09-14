@@ -7,32 +7,32 @@
 	.section	.rodata.map_aname.1,"aMS",%progbits,1
 	.type	.L.map_aname.1, %object
 .L.map_aname.1:
-	.asciz	"Xamarin.Android.Support.Compat"
-	.size	.L.map_aname.1, 31
+	.asciz	"AppWorldAgent.Android"
+	.size	.L.map_aname.1, 22
 
 	.section	.rodata.map_aname.2,"aMS",%progbits,1
 	.type	.L.map_aname.2, %object
 .L.map_aname.2:
-	.asciz	"Xamarin.Android.Support.CustomTabs"
-	.size	.L.map_aname.2, 35
+	.asciz	"Xamarin.Android.Support.Compat"
+	.size	.L.map_aname.2, 31
 
 	.section	.rodata.map_aname.3,"aMS",%progbits,1
 	.type	.L.map_aname.3, %object
 .L.map_aname.3:
-	.asciz	"Xamarin.Forms.Platform.Android"
-	.size	.L.map_aname.3, 31
+	.asciz	"Xamarin.Android.Support.CustomTabs"
+	.size	.L.map_aname.3, 35
 
 	.section	.rodata.map_aname.4,"aMS",%progbits,1
 	.type	.L.map_aname.4, %object
 .L.map_aname.4:
-	.asciz	"Xamarin.Android.Support.v7.CardView"
-	.size	.L.map_aname.4, 36
+	.asciz	"Xamarin.Forms.Platform.Android"
+	.size	.L.map_aname.4, 31
 
 	.section	.rodata.map_aname.5,"aMS",%progbits,1
 	.type	.L.map_aname.5, %object
 .L.map_aname.5:
-	.asciz	"AppWorldAgent.Android"
-	.size	.L.map_aname.5, 22
+	.asciz	"Xamarin.Android.Support.v7.CardView"
+	.size	.L.map_aname.5, 36
 
 	.section	.rodata.map_aname.6,"aMS",%progbits,1
 	.type	.L.map_aname.6, %object

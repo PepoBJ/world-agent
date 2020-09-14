@@ -9,6 +9,7 @@
     using AppWorldAgent.Services.Criteria;
     using AppWorldAgent.Services.DataAccess.Identity;
     using System;
+    using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -70,7 +71,7 @@
             {
                 if (logoutParameter.Logout)
                 {
-                    _settingsService.AccessToken = string.Empty;
+                    _settingsService.AuthAccessToken = string.Empty;
                     _settingsService.UserName = string.Empty;
                     _settingsService.UserLastName = string.Empty;
                     _settingsService.UserType = string.Empty;
@@ -85,6 +86,7 @@
         public ICommand ValidateUserNameCommand => new Command(() => ValidateUserName());
         public ICommand ValidatePasswordCommand => new Command(() => ValidatePassword());
         public ICommand SignInCommand => new Command(async () => await SignInAsync());
+        public ICommand RegisterCommand => new Command(async () => await NavigationService.NavigateToAsync<RegisterViewModel>());
         public ICommand ToggleIsPasswordServicesCommand => new Command(async () => await ToggleIsPasswordServicesasync());
 
         private async Task ToggleIsPasswordServicesasync()
@@ -104,23 +106,23 @@
                 {
                     UserCredentialCriteria criteria = new UserCredentialCriteria
                     {
-                        UserName = UserName.Value,
+                        Email = UserName.Value,
                         Password = Password.Value,
                     };
 
                     var result = await _identityService.SignInAsync(criteria);
                     if (result.Successful)
                     {
-                        _settingsService.AccessToken = result.AccessToken;
-                        _settingsService.UserName = result.UserName;
-                        _settingsService.UserLastName = result.UserLastName;
-                        _settingsService.UserType = result.UserType;
-                        GlobalSetting.Instance.BaseEndpoint = _settingsService.UrlBase = result.URLService.ToString();
+                        _settingsService.AuthAccessToken = result.AccessToken;
+                        //_settingsService.UserName = result.UserName;
+                        //_settingsService.UserLastName = result.UserLastName;
+                        //_settingsService.UserType = result.UserType;
+                        //GlobalSetting.Instance.BaseEndpoint = _settingsService.UrlBase = result.URLService.ToString();
                         await NavigationService.NavigateToAsync<MainViewModel>();
                     }
                     else
                     {
-                        DialogService.ShowToast($"Sign In \nDetalle:{result.Errors[0]} ", ToastConfigEnum.Error);
+                        DialogService.ShowToast($"Sign In Error \n {result.Errors.FirstOrDefault()}", ToastConfigEnum.Error);
                     }
                 }
                 else
@@ -147,7 +149,7 @@
         private void AddValidations()
         {
             _userName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = DisplayInformation.NameIsRequired });
-            _userName.Validations.Add(new StringLengthValidateRule<string> { ValidationMessage = DisplayInformation.MaxLength, Length = 15 });
+            _userName.Validations.Add(new StringLengthValidateRule<string> { ValidationMessage = DisplayInformation.MaxLength, Length = 30 });
             _password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = DisplayInformation.PasswordIsRequired });
         }
 
