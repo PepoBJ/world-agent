@@ -4,6 +4,7 @@
     using AppWorldAgent.Infrastructure.Exceptions;
     using AppWorldAgent.Infrastructure.Extensions;
     using AppWorldAgent.Infrastructure.Globalization;
+    using AppWorldAgent.Infrastructure.Models.User;
     using AppWorldAgent.Infrastructure.Services.RequestProvider;
     using AppWorldAgent.Services.Criteria;
     using AppWorldAgent.Services.Entity;
@@ -20,50 +21,46 @@
             _requestProvider = requestProvider;
         }
 
-        public async Task<UserProfileModel> SignInAsync(UserCredentialCriteria model)
+        public async Task<UserToken> SignInAsync(UserCredentialCriteria model)
         {
-            UserProfileModel resultModel;
+            UserToken resultModel;
             try
             {
-                await Task.Delay(20);
-
-                if (model.UserName.Equals("WorldAgent") && model.Password.Equals("WorldAgent"))
-                {
-                    resultModel = new UserProfileModel
-                    {
-                        AccessToken = Guid.NewGuid().ToString(),
-                        UserName = "World Agent",
-                        UserLastName = "World Agent",
-                        UserType = "Agente",
-                        URLService = GlobalSetting.DefaultURLService,
-                        Successful = true,
-                        Errors = new System.Collections.Generic.List<string>()
-                    };
-                }
-                else
-                {
-                    resultModel = new UserProfileModel();
-                }
-
-                //var uri = new Uri(string.Format(GlobalSetting.DefaultUrlBase, string.Empty));
-                //resultModel = await _requestProvider.PutAsync<UserProfileModel, UserCredentialCriteria>(uri, model, string.Empty);
+                var uri = new Uri($"{GlobalSetting.DefaultUrlBase}/api/auth");
+                resultModel = await _requestProvider.PostAsync<UserToken, UserCredentialCriteria>(uri, model, string.Empty);
             }
             catch (Exception ex)
             {
                 WebException webException = ex.FindInnerException<WebException>();
                 if (webException != null)
                 {
-                    resultModel = new UserProfileModel();
-                    resultModel.Errors.Add(DisplayInformation.WebExceptionMessage);
+                    resultModel = new UserToken();
+                    //resultModel.Errors.Add(DisplayInformation.WebExceptionMessage);
                 }
                 else
                 {
                     HttpRequestExceptionEx httpRequestException = ex.FindInnerException<HttpRequestExceptionEx>();
                     if (httpRequestException != null)
-                        resultModel = JsonConvert.DeserializeObject<UserProfileModel>(httpRequestException.Message);
+                        resultModel = JsonConvert.DeserializeObject<UserToken>(httpRequestException.Message);
                     else
                         throw ex;
                 }
+            }
+            return resultModel;
+        }
+
+        public async Task<UserProfileModel> RegisterAsync(RegisterUserCriteria model)
+        {
+            UserProfileModel resultModel;
+            try
+            {
+                var uri = new Uri($"{GlobalSetting.DefaultUrlBase}/api/User");
+                resultModel = await _requestProvider.PostAsync<UserProfileModel, RegisterUserCriteria>(uri, model, null);
+            }
+            catch (Exception ex)
+            {
+                string message = ex.Message;
+                resultModel = new UserProfileModel();
             }
             return resultModel;
         }

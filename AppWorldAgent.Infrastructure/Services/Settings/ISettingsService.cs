@@ -5,7 +5,8 @@
 
     public interface ISettingsService
     {
-        string AccessToken { get; set; }
+        string AuthAccessToken { get; set; }
+        string AuthIdToken { get; set; }
         string UserName { get; set; }
         string UserLastName { get; set; }
         string UserType { get; set; }

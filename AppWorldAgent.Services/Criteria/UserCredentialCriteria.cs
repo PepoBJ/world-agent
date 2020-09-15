@@ -3,9 +3,9 @@
     public class UserCredentialCriteria
     {
         /// <summary>
-        /// Gets or sets UserName
+        /// Gets or sets Email
         /// </summary>
-        public string UserName { get; set; }
+        public string Email { get; set; }
         /// <summary>
         /// Gets or sets Password
         /// </summary>

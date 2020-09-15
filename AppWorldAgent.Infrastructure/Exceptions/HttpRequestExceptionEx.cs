@@ -3,7 +3,7 @@
     using System;
     using System.Net.Http;
 
-    public class HttpRequestExceptionEx : LogawareException//HttpRequestException
+    public class HttpRequestExceptionEx : HttpRequestException
     {
         public System.Net.HttpStatusCode HttpCode { get; }
         public HttpRequestExceptionEx(System.Net.HttpStatusCode code) : this(code, null, null){}

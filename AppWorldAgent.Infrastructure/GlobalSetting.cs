@@ -3,8 +3,8 @@
     public class GlobalSetting
     {
         #region Const Properties
-        public const string DefaultURLService = "https://www.AppWorldAgent.com/"; // i.e.: "http://YOUR_IP" or "http://YOUR_DNS_NAME"
-        public const string DefaultUrlBase = "https://www.AppWorldAgent.com/"; 
+        public const string DefaultURLService = "http://agentemundial.com/"; // i.e.: "http://YOUR_IP" or "http://YOUR_DNS_NAME"
+        public const string DefaultUrlBase = "http://agentemundial.com/"; 
         public const string UrlWeb = "https://www.google.com/"; 
         #endregion
 

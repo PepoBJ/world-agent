@@ -1,6 +1,8 @@
 ﻿namespace AppWorldAgent.Infrastructure.Services.RequestProvider
 {
     using AppWorldAgent.Infrastructure.Exceptions;
+    using AppWorldAgent.Infrastructure.Extensions;
+    using AppWorldAgent.Infrastructure.Models.Result;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Serialization;
@@ -28,13 +30,16 @@
 
         public async Task<TResult> GetAsync<TResult>(Uri uri, string token = "")
         {
-                HttpClient httpClient = CreateHttpClient(token);
-                HttpResponseMessage response = await httpClient.GetAsync(uri);
-                await HandleResponse(response);
-                string serialized = await response.Content.ReadAsStringAsync();
-                TResult result = await Task.Run(() =>
-                    JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
-                return result;
+            HttpClient httpClient = CreateHttpClient(token);
+            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            await HandleResponse(response);
+            string serialized = await response.Content.ReadAsStringAsync();
+            TResult result = await Task.Run(() =>
+                JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
+
+            FunctionBase(result, response.StatusCode);
+
+            return result;
         }
 
         public async Task<TResult> PutAsync<TResult>(Uri uri, TResult data, string token = "", string header = "")
@@ -56,6 +61,7 @@
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
 
+            FunctionBase(result, response.StatusCode);
             return result;
         }
 
@@ -78,6 +84,7 @@
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
 
+            FunctionBase(result, response.StatusCode);
             return result;
         }
 
@@ -100,6 +107,7 @@
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
 
+            FunctionBase(result, response.StatusCode);
             return result;
         }
 
@@ -117,6 +125,7 @@
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
 
+            FunctionBase(result, response.StatusCode);
             return result;
         }
 
@@ -138,6 +147,8 @@
 
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
+
+            FunctionBase(result, response.StatusCode);
 
             return result;
         }
@@ -165,6 +176,7 @@
             TResult result = await Task.Run(() =>
                 JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings));
 
+            FunctionBase(result, response.StatusCode);
             return result;
         }
 
@@ -190,6 +202,18 @@
                 return;
 
             httpClient.DefaultRequestHeaders.Add(parameter, Guid.NewGuid().ToString());
+        }
+
+        /// <summary>
+        /// FunctionBase
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="statusCode"></param>
+        private void FunctionBase<TResult>(TResult result, HttpStatusCode statusCode)
+        {
+            if (result.GetType().GetProperty("Successful") != null)
+                result.GetType().GetProperty("Successful").SetValue(result, statusCode.IsHttpStatusCode());
         }
 
         private async Task HandleResponse(HttpResponseMessage response)

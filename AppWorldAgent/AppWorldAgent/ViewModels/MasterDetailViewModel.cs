@@ -31,6 +31,12 @@ namespace AppWorldAgent.ViewModels
                     Icon = "Profile.png",
                     Title = "Mi Perfil",
                 },
+                //new MasterDetailModel
+                //{
+                //    Id = MenuItemType.RegisterView,
+                //    Icon = "Profile.png",
+                //    Title = "Registro",
+                //},
                 new MasterDetailModel
                 {
                     Id = MenuItemType.SettingsView,

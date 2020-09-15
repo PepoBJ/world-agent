@@ -26,6 +26,15 @@
                 <Setter Property="Animate" 
                         Value="True" />
             </Style>
+
+            <Style x:Key="ButtonStyle"
+                   TargetType="{x:Type Button}">
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -104,6 +113,7 @@
                         <Button x:Name="CancelButton" 
                             Text="Cancelar"/>
                     </StackLayout>
+                    <Button Text="Registro" Style="{StaticResource ButtonStyle}" Command="{Binding RegisterCommand}"/>
                     <Label FontSize="Medium" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
                         <Label.FormattedText>
                             <FormattedString>

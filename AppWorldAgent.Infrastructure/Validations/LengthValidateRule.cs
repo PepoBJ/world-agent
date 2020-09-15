@@ -2,7 +2,9 @@
 namespace AppWorldAgent.Infrastructure.Validations
 {
     using AppWorldAgent.Infrastructure.Services.Validations;
+    using System;
     using System.Globalization;
+    using System.Net.Mail;
 
     public class CompanyLengthValidateRule<T> : IValidationRule<T>
     {
@@ -55,6 +57,9 @@ namespace AppWorldAgent.Infrastructure.Validations
 
             if (Length == 0)
                 Length = 1;
+
+            if (!string.IsNullOrEmpty(this.ValidationMessage))
+                this.ValidationMessage = string.Format(this.ValidationMessage, this.Length);
 
             var str = value as string;
             if (str.Length < Length)
@@ -128,4 +133,27 @@ namespace AppWorldAgent.Infrastructure.Validations
             return true;
         }
     }
+
+    public class EmailValidationRule<T> : IValidationRule<T>
+    {
+        public string ValidationMessage { get; set; }
+        public bool Check(T value)
+        {
+            if (value == null)
+                return false;
+            var emailaddress = value as string;
+
+            try
+            {
+                MailAddress m = new MailAddress(emailaddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+    }
+
 }

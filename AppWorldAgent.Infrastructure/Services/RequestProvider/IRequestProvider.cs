@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public interface IRequestProvider
+    public interface IRequestProvider 
     {
         Task<TResult> GetAsync<TResult>(Uri uri, string token = "");
 

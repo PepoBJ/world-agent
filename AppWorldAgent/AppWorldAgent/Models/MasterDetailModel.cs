@@ -3,6 +3,7 @@
     public enum MenuItemType
     {
         ProfileView,
+        RegisterView,
         SettingsView,
         SelectTestViewModel,
         UrlLogaware
